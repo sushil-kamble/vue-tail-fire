@@ -1,0 +1,43 @@
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  background-color: aliceblue;
+  position: relative;
+}
+
+.router-link-active {
+  color: #1d4ed8;
+}
+
+h1 {
+  @apply text-4xl;
+}
+
+h2 {
+  @apply text-3xl;
+}
+
+.t-input {
+  @apply shadow
+    appearance-none
+    border
+    rounded
+    w-full
+    py-2
+    px-3
+    text-gray-700
+    leading-tight
+    focus:outline-none;
+}
+
+.t-btn {
+  @apply font-bold py-2 px-4 rounded focus:outline-none ease-linear
+  transition-all
+  duration-150;
+}
