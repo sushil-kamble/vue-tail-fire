@@ -1,30 +1,40 @@
 import { createRouter, createWebHistory } from "vue-router";
-import { getUserState } from "../firebase";
+import { getUserState } from "@/firebase";
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: () => import("../views/Home.vue"),
+    component: () => import("@/views/Home.vue")
+  },
+  {
+    path: "/profile",
+    name: "Profile",
+    component: () => import("@/views/Profile.vue"),
     meta: { requiresAuth: true }
   },
   {
-    path: "/login",
+    path: "/auth/login",
     name: "Login",
-    component: () => import("../views/Login.vue"),
+    component: () => import("@/views/auth/Login.vue"),
     meta: { noAuth: true }
   },
   {
-    path: "/signup",
+    path: "/auth/signup",
     name: "SignUp",
-    component: () => import("../views/SignUp.vue"),
+    component: () => import("@/views/auth/SignUp.vue"),
     meta: { noAuth: true }
   },
-
+  {
+    path: "/auth/forgot-password",
+    name: "ForgotPassword",
+    component: () => import("@/views/auth/ForgotPassword.vue"),
+    meta: { noAuth: true }
+  },
   {
     path: "/database",
     name: "Database",
-    component: () => import("../views/Database.vue"),
+    component: () => import("@/views/Database.vue"),
     meta: { requiresAuth: true }
   }
 ];

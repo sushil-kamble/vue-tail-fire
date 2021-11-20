@@ -1,0 +1,77 @@
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #22272e;
+  color: white;
+  font-family: Ubuntu, sans-serif;
+}
+
+.main-set {
+  @apply lg:container lg:mx-auto md:px-20 2xl:px-40;
+}
+
+@layer base {
+  h1 {
+    @apply text-xl font-heading font-bold md:text-3xl;
+  }
+  h2 {
+    @apply font-heading text-xl md:text-2xl;
+  }
+  h3 {
+    @apply font-text text-base md:text-lg;
+  }
+  h4 {
+    @apply font-heading text-xs md:text-lg;
+  }
+  h5 {
+    @apply font-text text-xs md:text-base;
+  }
+}
+
+hr {
+  @apply border-primary mt-1 my-4;
+}
+
+/* AUTH */
+.section {
+  @apply my-4 md:my-20 w-11/12 md:w-2/3 lg:w-3/5 mx-auto;
+}
+.auth-form {
+  @apply bg-secondary shadow-md rounded p-6;
+}
+/* AUTH */
+
+/* Pages */
+.page-pos {
+  @apply my-4 md:my-20;
+}
+/* Pages */
+
+.router-link-active {
+  @apply bg-primary;
+}
+
+.t-input {
+  @apply shadow
+    appearance-none
+    border
+    rounded
+    w-full
+    p-3
+    text-black
+    leading-tight
+    focus:outline-none;
+}
+
+.t-btn {
+  @apply font-bold py-2 px-4 rounded focus:outline-none ease-linear
+  transition-all
+  duration-150;
+}
+
+.transition-effect {
+  @apply transition duration-500 ease-in-out;
+}

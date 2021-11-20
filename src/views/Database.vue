@@ -1,10 +1,10 @@
 <template>
-  <section class="bg-white p-4">
+  <section class="page-pos bg-secondary p-4">
     <div>
       <h1 class="my-2">Write to Firestore.</h1>
       <div>
         <button
-          class="mt-2 t-btn bg-blue-500 hover:bg-blue-700 text-white"
+          class="mt-2 t-btn bg-primary hover:bg-opacity-75"
           @click="writeToDatabase"
         >
           <span>Write now</span>
@@ -13,7 +13,7 @@
       <h1 class="mt-6 mb-2">Read From Database</h1>
       <div>
         <button
-          class="mt-2 t-btn bg-blue-500 hover:bg-blue-700 text-white"
+          class="mt-2 t-btn bg-primary hover:bg-opacity-75"
           @click="readFromDatabase"
         >
           <span>Read now</span>

@@ -1,62 +1,92 @@
 <template>
-  <div>
-    <div v-if="user" class="flex justify-between">
-      <ul class="flex">
-        <li class="mr-6">
-          <router-link
-            class="text-gray-700 hover:text-gray-800"
-            :to="{ name: 'Home' }"
-            >Home
-          </router-link>
-        </li>
-        <li class="mr-6">
-          <router-link
-            class="text-gray-700 hover:text-gray-800"
-            :to="{ name: 'Database' }"
-            >Database
-          </router-link>
-        </li>
-      </ul>
-      <ul>
-        <li
-          class="text-red-500 hover:text-red-800 cursor-pointer px-2"
-          @click="signOutUser"
+  <nav class="transition-effect nav-style px-2 md:px-0">
+    <div class="main-set flex justify-between items-center">
+      <h1 class="font-bold text-primary cursor-pointer" @click="goToHome">
+        My App
+      </h1>
+      <div class="hidden md:block" v-if="user">
+        <router-link :to="{ name: 'Home' }" class="nav-link transition-effect"
+          >Home
+        </router-link>
+        <router-link
+          :to="{ name: 'Profile' }"
+          class="nav-link transition-effect"
         >
-          Logout
-        </li>
-      </ul>
-    </div>
-    <ul class="flex" v-else>
-      <li class="mr-6">
-        <router-link
-          class="text-gray-700 hover:text-gray-800"
-          :to="{ name: 'Login' }"
-          >Login
+          Profile
         </router-link>
-      </li>
-      <li class="mr-6">
         <router-link
-          class="text-gray-700 hover:text-gray-800"
+          :to="{ name: 'Database' }"
+          class="nav-link transition-effect"
+          >Database
+        </router-link>
+        <a
+          class="
+            transition-effect
+            py-2
+            px-4
+            ml-4
+            font-heading
+            rounded
+            cursor-pointer
+            bg-red-600
+            hover:bg-opacity-75
+          "
+          @click="signOutUser"
+          >Log Out
+        </a>
+      </div>
+      <div class="hidden md:block" v-else>
+        <router-link :to="{ name: 'Home' }" class="nav-link transition-effect"
+          >Home
+        </router-link>
+        <router-link :to="{ name: 'Login' }" class="nav-link transition-effect">
+          Login
+        </router-link>
+        <router-link
           :to="{ name: 'SignUp' }"
-          >Sign Up
+          class="nav-link transition-effect"
+        >
+          Sign Up
         </router-link>
-      </li>
-    </ul>
-  </div>
+      </div>
+      <div class="block md:hidden">
+        <Menu />
+      </div>
+    </div>
+  </nav>
 </template>
 
 <script>
-import { useAuthState, useSignOut } from "../firebase";
+import { useAuthState, useSignOut } from "@/firebase";
 import { useRouter } from "vue-router";
-export default {
+import { defineComponent } from "vue";
+import Menu from "./Menu.vue";
+export default defineComponent({
+  components: { Menu },
   setup() {
     const { user } = useAuthState();
     const router = useRouter();
     const signOutUser = async () => {
       await useSignOut();
-      await router.replace("/login");
+      await router.replace({ name: "Login" });
     };
-    return { user, signOutUser };
+    const goToHome = () => {
+      router.push({ name: "Home" });
+    };
+    return { user, signOutUser, goToHome };
   },
-};
+});
 </script>
+
+<style lang="postcss" scoped>
+.nav-style {
+  @apply py-4 px-2 top-0 z-10 sticky
+  shadow-md bg-black
+  bg-opacity-20
+  backdrop-filter backdrop-blur-sm;
+}
+.nav-link {
+  @apply py-2 px-4 ml-2 font-heading rounded
+  hover:bg-primary;
+}
+</style>

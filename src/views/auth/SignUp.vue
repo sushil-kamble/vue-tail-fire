@@ -1,9 +1,11 @@
 <template>
-  <section class="w-11/12 md:w-2/3 lg:w-1/2 mx-auto">
-    <form @submit.prevent="handleSubmit" class="bg-white shadow-md rounded p-6">
+  <section class="section">
+    <form @submit.prevent="handleSubmit" class="auth-form">
       <h1 class="mb-6">Sign Up</h1>
+      <hr />
       <div class="mb-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+        <label class="block text-sm font-bold mb-2" for="email">
+          <font-awesome-icon :icon="['fas', 'envelope']" class="mr-1" />
           Email
         </label>
         <input
@@ -19,7 +21,8 @@
         </p>
       </div>
       <div class="mb-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+        <label class="block text-sm font-bold mb-2" for="name">
+          <font-awesome-icon :icon="['fas', 'user-circle']" class="mr-1" />
           Display Name
         </label>
         <input
@@ -32,10 +35,8 @@
         />
       </div>
       <div class="mb-4">
-        <label
-          class="block text-gray-700 text-sm font-bold mb-2"
-          for="password"
-        >
+        <label class="block text-sm font-bold mb-2" for="password">
+          <font-awesome-icon :icon="['fas', 'key']" class="mr-1" />
           Password
         </label>
         <input
@@ -48,10 +49,8 @@
         />
       </div>
       <div class="mb-4">
-        <label
-          class="block text-gray-700 text-sm font-bold mb-2"
-          for="cpassword"
-        >
+        <label class="block text-sm font-bold mb-2" for="cpassword">
+          <font-awesome-icon :icon="['fas', 'key']" class="mr-1" />
           Confirm Password
         </label>
         <input
@@ -65,21 +64,24 @@
           Password and Confirm Password doesn't match.
         </p>
       </div>
-      <button
-        type="submit"
-        class="
-          t-btn
-          inline-flex
-          items-center
-          bg-blue-500
-          hover:bg-blue-700
-          text-white
-        "
-      >
-        <Loading class="h-5 w-5" v-show="loading" />
-        Sign Up
-      </button>
-      <div v-if="error.length > 0" class="mt-4 bg-red-50 p-4">
+      <div class="flex justify-between items-center">
+        <button
+          type="submit"
+          class="t-btn inline-flex items-center bg-primary hover:bg-opacity-75"
+        >
+          <Loading class="h-5 w-5" v-if="loading" />
+          <font-awesome-icon :icon="['fas', 'user-plus']" class="mr-2" v-else />
+          Sign Up
+        </button>
+        <h5 class="mr-1">
+          Already Signed Up?
+          <router-link :to="{ name: 'Login' }" class="text-primary">
+            Login
+          </router-link>
+        </h5>
+      </div>
+
+      <div v-if="error.length > 0" class="mt-4 p-4 bg-red-500 rounded">
         {{ error }}
       </div>
     </form>
@@ -94,7 +96,7 @@ import {
 } from "firebase/auth";
 import { useRouter } from "vue-router";
 import { reactive, toRefs, computed, ref, watch } from "vue";
-import Loading from "../components/Loading.vue";
+import Loading from "@/components/Loading.vue";
 
 export default {
   name: "SignUp",
@@ -145,7 +147,7 @@ export default {
           await updateProfile(user, {
             displayName: state.displayName,
           });
-          await router.replace("/");
+          await router.replace({ name: "Profile" });
         } catch (e) {
           error.value = e.message;
         }

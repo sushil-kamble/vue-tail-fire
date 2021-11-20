@@ -1,12 +1,13 @@
 <template>
   <div>
     <button
-      class="t-btn bg-blue-500 hover:bg-blue-700 text-white"
+      class="t-btn bg-primary hover:bg-opacity-80"
       type="button"
       v-on:click="toggleModal()"
       @focusout="showModal = false"
       tabindex="0"
     >
+      <font-awesome-icon :icon="['fas', 'info-circle']" class="mr-1" />
       {{ buttonName }}
     </button>
     <transition name="bounce">
@@ -34,7 +35,7 @@
               relative
               flex flex-col
               w-full
-              bg-white
+              bg-secondary
               outline-none
               focus:outline-none
             "
@@ -50,7 +51,7 @@
                 rounded-t
               "
             >
-              <h3 class="text-3xl font-semibold">{{ title }}</h3>
+              <h1>{{ title }}</h1>
             </div>
             <!--body-->
             <div class="relative p-6 flex-auto">

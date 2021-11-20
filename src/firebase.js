@@ -3,6 +3,7 @@ import { computed, onMounted, onUnmounted, ref } from "vue";
 
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { GoogleAuthProvider } from "firebase/auth";
 
 export const firebaseApp = initializeApp({
   apiKey: import.meta.env.VITE_APP_API_KEY,
