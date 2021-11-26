@@ -2,8 +2,7 @@ import { initializeApp } from "firebase/app";
 import { computed, onMounted, onUnmounted, ref } from "vue";
 
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-import { GoogleAuthProvider } from "firebase/auth";
+// import { getFirestore } from "firebase/firestore";
 
 export const firebaseApp = initializeApp({
   apiKey: import.meta.env.VITE_APP_API_KEY,
@@ -47,4 +46,4 @@ export const getUserState = () =>
     onAuthStateChanged(getAuth(), resolve, reject)
   );
 
-export const db = getFirestore(firebaseApp);
+// export const db = getFirestore(firebaseApp);

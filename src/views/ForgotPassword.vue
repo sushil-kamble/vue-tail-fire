@@ -26,7 +26,7 @@
       <div
         v-if="message.length > 0"
         :class="`mt-4 p-4 rounded ${
-          message.substr(0, 5) !== 'Email' ? 'bg-red-500' : 'bg-primary'
+          message.substr(0, 5) !== 'Email' ? 'bg-error' : 'bg-primary'
         }`"
       >
         {{ message }}

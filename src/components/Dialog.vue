@@ -1,127 +1,130 @@
 <template>
   <div>
     <button
-      class="t-btn bg-primary hover:bg-opacity-80"
       type="button"
-      v-on:click="toggleModal()"
-      @focusout="showModal = false"
-      tabindex="0"
+      @click="openModal"
+      class="t-btn bg-primary hover:bg-opacity-75"
     >
-      <font-awesome-icon :icon="['fas', 'info-circle']" class="mr-1" />
+      <font-awesome-icon :icon="icon" class="mr-1" />
       {{ buttonName }}
     </button>
-    <transition name="bounce">
-      <div
-        v-if="showModal"
-        class="
-          w-11/12
-          mx-auto
-          md:w-1/2
-          overflow-x-hidden overflow-y-auto
-          fixed
-          inset-0
-          z-50
-          items-center
-          flex
-        "
-      >
-        <div class="relative w-auto my-6 mx-auto max-w-3xl">
-          <!--content-->
-          <div
-            class="
-              border-0
-              rounded-lg
-              shadow-lg
-              relative
-              flex flex-col
-              w-full
-              bg-secondary
-              outline-none
-              focus:outline-none
-            "
+  </div>
+  <TransitionRoot appear :show="isOpen" as="template">
+    <Dialog as="div" @close="closeModal">
+      <div class="fixed inset-0 z-10 overflow-y-auto">
+        <div class="min-h-screen px-4 text-center">
+          <DialogOverlay class="fixed inset-0 bg-black opacity-50" />
+
+          <span class="inline-block h-screen align-middle" aria-hidden="true">
+            &#8203;
+          </span>
+
+          <TransitionChild
+            as="template"
+            enter="duration-300 ease-out"
+            enter-from="opacity-0 scale-90"
+            enter-to="opacity-100 scale-100"
+            leave="duration-200 ease-in"
+            leave-from="opacity-100 scale-100"
+            leave-to="opacity-0 scale-90"
           >
-            <!--header-->
             <div
               class="
-                flex
-                items-start
-                justify-between
-                p-5
-                border-b border-solid border-blueGray-200
-                rounded-t
-              "
-            >
-              <h1>{{ title }}</h1>
-            </div>
-            <!--body-->
-            <div class="relative p-6 flex-auto">
-              <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
-                {{ description }}
-              </p>
-            </div>
-            <!--footer-->
-            <div
-              class="
-                flex
-                items-center
-                justify-end
+                inline-block
+                w-full
+                max-w-md
                 p-6
-                border-t border-solid border-blueGray-200
-                rounded-b
+                overflow-hidden
+                text-left
+                align-middle
+                transition-all
+                transform
+                bg-secondary
+                shadow-xl
+                rounded-2xl
               "
             >
-              <button
-                class="t-btn bg-red-500 hover:bg-red-700 text-white mr-3"
-                type="button"
-                v-on:click="showModal = false"
-              >
-                Close
-              </button>
+              <DialogTitle as="h2">
+                {{ title }}
+              </DialogTitle>
+              <div class="mt-2">
+                <p class="text-sm">
+                  {{ description }}
+                </p>
+              </div>
+
+              <div class="mt-4">
+                <button
+                  type="button"
+                  class="
+                    inline-flex
+                    justify-center
+                    t-btn
+                    bg-primary
+                    hover:bg-opacity-75
+                  "
+                  @click="closeModal"
+                >
+                  Close
+                </button>
+              </div>
             </div>
-          </div>
+          </TransitionChild>
         </div>
       </div>
-    </transition>
-    <div v-if="showModal" class="opacity-50 fixed inset-0 z-40 bg-black"></div>
-  </div>
+    </Dialog>
+  </TransitionRoot>
 </template>
 
 <script>
+import { ref } from "vue";
+import {
+  TransitionRoot,
+  TransitionChild,
+  Dialog,
+  DialogOverlay,
+  DialogTitle,
+} from "@headlessui/vue";
+
 export default {
-  props: { buttonName: String, title: String, description: String },
-  name: "Dailog",
-  data() {
-    return {
-      showModal: false,
-    };
+  components: {
+    TransitionRoot,
+    TransitionChild,
+    Dialog,
+    DialogOverlay,
+    DialogTitle,
   },
-  methods: {
-    toggleModal: function () {
-      this.showModal = !this.showModal;
+  props: {
+    buttonName: {
+      type: String,
+      default: "Click Me",
+    },
+    title: {
+      type: String,
+      default: "Title",
+    },
+    description: {
+      type: String,
+      default: "Hello There!",
+    },
+    icon: {
+      type: Array,
+      default: ["fas", "info-circle"],
     },
   },
+
   setup() {
-    return {};
+    const isOpen = ref(false);
+
+    return {
+      isOpen,
+      closeModal() {
+        isOpen.value = false;
+      },
+      openModal() {
+        isOpen.value = true;
+      },
+    };
   },
 };
 </script>
-
-<style scoped>
-.bounce-enter-active {
-  animation: bounce-in 0.3s;
-}
-.bounce-leave-active {
-  animation: bounce-in 0.3s reverse;
-}
-@keyframes bounce-in {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-</style>

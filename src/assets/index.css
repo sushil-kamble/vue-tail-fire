@@ -13,6 +13,14 @@ body {
   @apply lg:container lg:mx-auto md:px-20 2xl:px-40;
 }
 
+.router-link-active {
+  @apply bg-primary;
+}
+
+.transition-effect {
+  @apply transition duration-500 ease-in-out;
+}
+
 @layer base {
   h1 {
     @apply text-xl font-heading font-bold md:text-3xl;
@@ -29,10 +37,9 @@ body {
   h5 {
     @apply font-text text-xs md:text-base;
   }
-}
-
-hr {
-  @apply border-primary mt-1 my-4;
+  hr {
+    @apply border-primary mt-1 my-4;
+  }
 }
 
 /* AUTH */
@@ -50,10 +57,7 @@ hr {
 }
 /* Pages */
 
-.router-link-active {
-  @apply bg-primary;
-}
-
+/* Inputs and Buttons */
 .t-input {
   @apply shadow
     appearance-none
@@ -71,7 +75,4 @@ hr {
   transition-all
   duration-150;
 }
-
-.transition-effect {
-  @apply transition duration-500 ease-in-out;
-}
+/* Inputs and Buttons */

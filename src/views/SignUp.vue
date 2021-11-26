@@ -9,14 +9,14 @@
           Email
         </label>
         <input
-          :class="`t-input ${!validEmail && 'border border-red-500'}`"
+          :class="`t-input ${!validEmail && 'border border-error'}`"
           type="email"
           id="email"
           placeholder="Email"
           v-model="email"
           required
         />
-        <p class="text-red-500 text-xs italic" v-show="!validEmail">
+        <p class="mt-0.5 text-error text-xs italic" v-show="!validEmail">
           Enter Valid Email
         </p>
       </div>
@@ -54,13 +54,13 @@
           Confirm Password
         </label>
         <input
-          :class="`t-input ${!equalPassword && 'border border-red-500'}`"
+          :class="`t-input ${!equalPassword && 'border border-error'}`"
           type="password"
           id="cpassword"
           placeholder="Confirm Password"
           v-model="cpassword"
         />
-        <p class="text-red-500 text-xs italic" v-show="!equalPassword">
+        <p class="mt-0.5 text-error text-xs italic" v-show="!equalPassword">
           Password and Confirm Password doesn't match.
         </p>
       </div>
@@ -81,7 +81,7 @@
         </h5>
       </div>
 
-      <div v-if="error.length > 0" class="mt-4 p-4 bg-red-500 rounded">
+      <div v-if="error.length > 0" class="mt-4 p-4 bg-error rounded">
         {{ error }}
       </div>
     </form>
@@ -95,7 +95,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { useRouter } from "vue-router";
-import { reactive, toRefs, computed, ref, watch } from "vue";
+import { reactive, toRefs, computed, ref } from "vue";
 import Loading from "@/components/Loading.vue";
 
 export default {
@@ -159,7 +159,6 @@ export default {
     };
 
     // Helper Function
-
     /**
      * @param {string} email
      */

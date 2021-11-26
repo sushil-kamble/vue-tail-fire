@@ -58,12 +58,12 @@
         <font-awesome-icon :icon="['fab', 'google']" class="mr-2" />
         Sign in with Google
       </button>
-      <h5 class="mt-5 text-red-500">
+      <h5 class="mt-5 text-error">
         <router-link :to="{ name: 'ForgotPassword' }"
           >Forgot Password?
         </router-link>
       </h5>
-      <div v-if="error.length > 0" class="mt-4 p-4 bg-red-500 rounded">
+      <div v-if="error.length > 0" class="mt-4 p-4 bg-error rounded">
         {{ error }}
       </div>
     </form>

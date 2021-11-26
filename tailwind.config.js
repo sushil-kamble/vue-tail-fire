@@ -1,4 +1,4 @@
-const colors = require('tailwindcss/colors')
+const colors = require("tailwindcss/colors");
 // tailwind.config.js
 module.exports = {
   purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
@@ -6,15 +6,15 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        heading: ['Goldman', 'cursive'],
-        text: ['Ubuntu', 'sans-serif']
+        heading: ["Goldman", "cursive"],
+        text: ["Ubuntu", "sans-serif"]
       },
       colors: {
         primary: colors.blue["500"],
-        secondary: colors.coolGray["700"]
+        secondary: colors.coolGray["700"],
+        error: colors.red["500"]
       }
-    },
-
+    }
   },
   variants: {
     extend: {}

@@ -34,7 +34,7 @@
         tabindex="-1"
       >
         <router-link
-          v-for="(item, n) in user ? menuAuth : menuNoAuth"
+          v-for="(item, n) in isAuthenticated ? menuAuth : menuNoAuth"
           :key="n"
           :to="item.link"
           class="block px-4 py-2 text-sm"
@@ -43,8 +43,8 @@
           {{ item.name }}
         </router-link>
         <p
-          v-if="user"
-          class="px-4 py-2 text-sm cursor-pointer text-red-500"
+          v-if="isAuthenticated"
+          class="px-4 py-2 text-sm cursor-pointer text-error"
           @click="signOutUser"
         >
           Logout
@@ -61,7 +61,7 @@ import { useRouter } from "vue-router";
 export default defineComponent({
   name: "Menu",
   setup() {
-    const { user } = useAuthState();
+    const { isAuthenticated } = useAuthState();
     const menuAuth = [
       { name: "Home", link: { name: "Home" } },
       { name: "Profile", link: { name: "Profile" } },
@@ -86,7 +86,7 @@ export default defineComponent({
       await router.replace({ name: "Login" });
     };
 
-    return { show, toggle, user, signOutUser, menuAuth, menuNoAuth };
+    return { show, toggle, isAuthenticated, signOutUser, menuAuth, menuNoAuth };
   },
 });
 </script>

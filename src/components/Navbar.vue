@@ -28,7 +28,7 @@
             font-heading
             rounded
             cursor-pointer
-            bg-red-600
+            bg-error
             hover:bg-opacity-75
           "
           @click="signOutUser"

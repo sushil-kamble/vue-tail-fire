@@ -19,9 +19,10 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "@vue/runtime-core";
-import Navbar from "./components/Navbar.vue";
-import Loading from "./components/Loading.vue";
+import { defineComponent, ref } from "vue";
+import Navbar from "@/components/Navbar.vue";
+import Loading from "@/components/Loading.vue";
+import { getUserState } from "@/firebase";
 export default defineComponent({
   name: "App",
   components: {
@@ -30,9 +31,9 @@ export default defineComponent({
   },
   setup(props) {
     const isLoading = ref(true);
-    setTimeout(() => {
+    getUserState().then(() => {
       isLoading.value = false;
-    }, 1000);
+    });
     return {
       isLoading,
     };

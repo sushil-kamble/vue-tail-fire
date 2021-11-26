@@ -2,7 +2,7 @@
   <section class="page-pos p-4 bg-secondary">
     <h1>Welcome, {{ user?.displayName }}</h1>
     <button
-      class="my-4 t-btn inline-flex items-center bg-red-500 hover:bg-opacity-75"
+      class="my-4 t-btn inline-flex items-center bg-error hover:bg-opacity-75"
       @click="signOutUser"
     >
       <Loading class="h-5 w-5" v-if="loading" />
@@ -17,6 +17,7 @@
       authetication demo using Vue 3, Firebase 9 and Tailwind. Features included are sign up 
       form validation, navigation guard, firestore read and write demo, page transition,
       and this reuseable modal."
+      :icon="['fas', 'info-circle']"
     />
   </section>
 </template>
