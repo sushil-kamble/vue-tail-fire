@@ -3,25 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: #22272e;
-  color: white;
-  font-family: Ubuntu, sans-serif;
-}
-
-.main-set {
-  @apply lg:container lg:mx-auto md:px-20 2xl:px-40;
-}
-
-.router-link-active {
-  @apply bg-primary;
-}
-
-.transition-effect {
-  @apply transition duration-500 ease-in-out;
-}
-
 @layer base {
+  body {
+    background-color: #22272e;
+    color: white;
+    font-family: Ubuntu, sans-serif;
+  }
   h1 {
     @apply text-xl font-heading font-bold md:text-3xl;
   }
@@ -42,17 +29,31 @@ body {
   }
 }
 
+/* Pre configured class */
+.router-link-active {
+  @apply bg-primary;
+}
+
+.t-main-set {
+  @apply lg:container lg:mx-auto md:px-20 2xl:px-40;
+}
+
+.t-transition-effect {
+  @apply transition duration-500 ease-in-out;
+}
+/* Pre configured class */
+
 /* AUTH */
-.section {
+.t-auth-section {
   @apply my-4 md:my-20 w-11/12 md:w-2/3 lg:w-3/5 mx-auto;
 }
-.auth-form {
+.t-auth-form {
   @apply bg-secondary shadow-md rounded p-6;
 }
 /* AUTH */
 
 /* Pages */
-.page-pos {
+.t-page-position {
   @apply my-4 md:my-20;
 }
 /* Pages */
@@ -73,6 +74,6 @@ body {
 .t-btn {
   @apply font-bold py-2 px-4 rounded focus:outline-none ease-linear
   transition-all
-  duration-150;
+  duration-150 hover:bg-opacity-75;
 }
 /* Inputs and Buttons */

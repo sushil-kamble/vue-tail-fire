@@ -1,6 +1,6 @@
 <template>
-  <section class="section">
-    <form @submit.prevent="handleSubmit" class="auth-form">
+  <section class="t-auth-section">
+    <form @submit.prevent="handleSubmit" class="t-auth-form">
       <h1 class="mb-6">Forgot Password</h1>
       <hr />
       <div class="mb-4">
@@ -8,10 +8,7 @@
         <input class="t-input" type="text" id="email" placeholder="Email" />
       </div>
       <div class="flex justify-between items-center">
-        <button
-          type="submit"
-          class="t-btn inline-flex items-center bg-primary hover:bg-opacity-75"
-        >
+        <button type="submit" class="t-btn inline-flex items-center bg-primary">
           <Loading class="h-5 w-5" v-show="loading" />
           Submit
         </button>

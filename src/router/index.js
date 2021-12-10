@@ -36,6 +36,11 @@ const routes = [
     name: "Database",
     component: () => import("@/views/Database.vue"),
     meta: { requiresAuth: true }
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "NotFound",
+    component: () => import("@/views/404.vue")
   }
 ];
 

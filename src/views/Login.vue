@@ -1,6 +1,6 @@
 <template>
-  <section class="section">
-    <form @submit.prevent="handleSubmit" class="auth-form">
+  <section class="t-auth-section">
+    <form @submit.prevent="handleSubmit" class="t-auth-form">
       <h1 class="mb-6">Login</h1>
       <hr />
       <div class="mb-4">
@@ -23,10 +23,7 @@
         />
       </div>
       <div class="flex justify-between items-center">
-        <button
-          type="submit"
-          class="t-btn inline-flex items-center bg-primary hover:bg-opacity-75"
-        >
+        <button type="submit" class="t-btn inline-flex items-center bg-primary">
           <Loading class="h-5 w-5" v-if="loading" />
           <font-awesome-icon
             :icon="['fas', 'sign-in-alt']"
@@ -45,15 +42,7 @@
       <button
         type="button"
         @click="googleSignUp"
-        class="
-          mt-4
-          t-btn
-          w-full
-          inline-flex
-          items-center
-          bg-primary
-          hover:bg-opacity-75
-        "
+        class="mt-4 t-btn w-full inline-flex items-center bg-primary"
       >
         <font-awesome-icon :icon="['fab', 'google']" class="mr-2" />
         Sign in with Google
@@ -81,6 +70,8 @@ import { useRouter } from "vue-router";
 import { ref } from "vue";
 import Loading from "@/components/Loading.vue";
 import Dialog from "@/components/Dialog.vue";
+import { isValidEmail } from "@/helpers/isValidEmail";
+
 export default {
   components: {
     Loading,
@@ -96,7 +87,11 @@ export default {
     const handleSubmit = async (e) => {
       loading.value = true;
       const { email, password } = e.target.elements;
-      if (email.value.length > 0 && password.value.length > 0) {
+      if (
+        email.value.length > 0 &&
+        password.value.length > 0 &&
+        isValidEmail(email.value)
+      ) {
         try {
           await signInWithEmailAndPassword(auth, email.value, password.value);
           await router.replace({ name: "Profile" });
@@ -104,7 +99,7 @@ export default {
           error.value = e.message;
         }
       } else {
-        error.value = "Enter Email Id and Password";
+        error.value = "Enter valid Email Id and Password";
       }
       loading.value = false;
     };

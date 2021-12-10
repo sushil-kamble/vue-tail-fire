@@ -1,10 +1,6 @@
 <template>
   <div>
-    <button
-      type="button"
-      @click="openModal"
-      class="t-btn bg-primary hover:bg-opacity-75"
-    >
+    <button type="button" @click="openModal" class="t-btn bg-primary">
       <font-awesome-icon :icon="icon" class="mr-1" />
       {{ buttonName }}
     </button>
@@ -56,13 +52,7 @@
               <div class="mt-4">
                 <button
                   type="button"
-                  class="
-                    inline-flex
-                    justify-center
-                    t-btn
-                    bg-primary
-                    hover:bg-opacity-75
-                  "
+                  class="inline-flex justify-center t-btn bg-primary"
                   @click="closeModal"
                 >
                   Close

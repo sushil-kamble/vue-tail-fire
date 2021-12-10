@@ -1,5 +1,5 @@
 <template>
-  <section class="p-4 page-pos bg-secondary">
+  <section class="p-4 t-page-position bg-secondary">
     <h1>Vue-Tail-Fire</h1>
     <hr />
     <h2 class="mb-2">Pages</h2>
@@ -22,7 +22,7 @@
   </section>
 </template>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 code {
   @apply bg-gray-800 px-2 mx-2;
 }

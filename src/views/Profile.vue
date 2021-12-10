@@ -1,8 +1,8 @@
 <template>
-  <section class="page-pos p-4 bg-secondary">
+  <section class="t-page-position p-4 bg-secondary">
     <h1>Welcome, {{ user?.displayName }}</h1>
     <button
-      class="my-4 t-btn inline-flex items-center bg-error hover:bg-opacity-75"
+      class="my-4 t-btn inline-flex items-center bg-error"
       @click="signOutUser"
     >
       <Loading class="h-5 w-5" v-if="loading" />

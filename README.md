@@ -24,13 +24,13 @@ At times it get very irritating when you want to start your new project which is
 You have to add **Routes**, **Protect** your routes, create a **Login** & **Register** component, **Style** those component and have a nice **Loading animation**,
 **Validate** your login/register form. and much much more.
 
-Here is **Vue-Fire-Tail** Boiler plate for you😊. Vue-Fire-Tail is powered by next-gen technologies like Vue 3 and Firebase 9.
+Here is **Vue-Fire-Tail** Boiler plate for you😊. Vue-Fire-Tail is powered by next-gen technologies like Vue 3 and Firebase 9 along with the power of Vite and Tailwind CSS v3.
 
 ### Latest and greatest Technologies
 
 1. [Vue 3](https://v3.vuejs.org/)
 1. [Firebase v9](https://firebase.google.com/docs/web/modular-upgrade)
-1. [Tailwind CSS](https://tailwindcss.com/)
+1. [Tailwind CSS v3](https://tailwindcss.com/)
 1. [Font Awesome](https://github.com/FortAwesome/vue-fontawesome)
 1. [Headless UI](https://headlessui.dev/)
 1. [Vite](https://vitejs.dev/guide/)
@@ -40,7 +40,7 @@ Here is **Vue-Fire-Tail** Boiler plate for you😊. Vue-Fire-Tail is powered by 
 1. Email Password Authetication & Google Authetication
 1. Forgot Password Feature
 1. Login & SignUp forms validations
-1. Loaders and page transitions for smooth user experience
+1. Fallback Page (404 Page), Loaders and page transitions for smooth user experience
 1. Font Awesome Icons pre configured.
 
 ### Quick Start
@@ -91,22 +91,26 @@ yarn dev # OR npm run dev
 - Login Page
 - Sign Up Page
 - Forgot Password Page
+- 404 Page
 - Profile Page - `Auth Required`
 - Database Page - `Auth Required`
 
 #### Helpers
 
+- Class suffixed with `t-` will be found `/src/assets/index.css`, they are basically global styles
+  > Some basic html elements and classes are already configured check out, `/src/assets/index.css`
 - `useAuthState` in `/src/firebase.js` returns `{ user, error, isAuthenticated }`
 - `useSignOut` in `/src/firebase.js` - Signs Out User
 - `getUserState` in `/src/firebase.js` - Returns promise
+- `isValidEmail` `/src/helpers/isValidEmail.js` function returns true if email is valid
 - `Loading` in `/src/components/Loading.vue` - Loading spinner
 - `Dialog` in `/src/components/Dialog.vue` - Headless UI dialog
 
 #### Theme
 
 - Font - `Ubuntu (font-text)` & `Goldman (font-heading)`
-- Primary Color - Tailwind - `colors.blue["500"]`
-- Secondary Color - Tailwind - `colors.coolGray["700"]`
+- Primary Color - Tailwind - `colors.sky["500"]`
+- Secondary Color - Tailwind - `colors.slate["700"]`
 - Background Color - index.css - `#22272e`
 - Error Color - Tailwind - `colors.red["500"]`
 
@@ -121,3 +125,4 @@ yarn dev # OR npm run dev
 ### Recommended IDE Setup
 
 - [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+- [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)

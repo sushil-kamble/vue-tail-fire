@@ -8,7 +8,7 @@
   </div>
   <div v-else>
     <Navbar />
-    <div class="main-set">
+    <div class="t-main-set">
       <router-view v-slot="{ Component, route }">
         <transition name="slide" mode="out-in">
           <component :is="Component" :key="route.path" />

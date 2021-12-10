@@ -1,6 +1,6 @@
 <template>
-  <section class="section">
-    <form @submit.prevent="handleSubmit" class="auth-form">
+  <section class="t-auth-section">
+    <form @submit.prevent="handleSubmit" class="t-auth-form">
       <h1 class="mb-6">Sign Up</h1>
       <hr />
       <div class="mb-4">
@@ -65,10 +65,7 @@
         </p>
       </div>
       <div class="flex justify-between items-center">
-        <button
-          type="submit"
-          class="t-btn inline-flex items-center bg-primary hover:bg-opacity-75"
-        >
+        <button type="submit" class="t-btn inline-flex items-center bg-primary">
           <Loading class="h-5 w-5" v-if="loading" />
           <font-awesome-icon :icon="['fas', 'user-plus']" class="mr-2" v-else />
           Sign Up
@@ -97,6 +94,7 @@ import {
 import { useRouter } from "vue-router";
 import { reactive, toRefs, computed, ref } from "vue";
 import Loading from "@/components/Loading.vue";
+import { isValidEmail } from "@/helpers/isValidEmail";
 
 export default {
   name: "SignUp",
@@ -119,9 +117,9 @@ export default {
 
     const validate = () => {
       if (
-        isNotValidEmail(state.email) ||
+        !isValidEmail(state.email) ||
         state.displayName.length === 0 ||
-        state.password < 6 ||
+        state.password.length < 6 ||
         state.password !== state.cpassword
       )
         return false;
@@ -132,7 +130,7 @@ export default {
       state.cpassword.length > 0 ? state.password === state.cpassword : true
     );
     const validEmail = computed(() =>
-      state.email.length > 1 ? !isNotValidEmail(state.email) : true
+      state.email.length > 1 ? isValidEmail(state.email) : true
     );
 
     const handleSubmit = async () => {
@@ -153,20 +151,10 @@ export default {
         }
       } else {
         error.value =
-          "Make sure your email id is valid, Display Name is present and Password and Confirm Password are same";
+          "Make sure your email id is valid, Display Name is present, Password is more than 5 characters and Password and Confirm Password are same";
       }
       loading.value = false;
     };
-
-    // Helper Function
-    /**
-     * @param {string} email
-     */
-    function isNotValidEmail(email) {
-      const re =
-        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return !re.test(String(email).toLowerCase());
-    }
 
     return {
       ...toRefs(state),
