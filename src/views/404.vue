@@ -1,5 +1,5 @@
 <template>
-  <section class="p-4 t-page-position bg-secondary">
+  <section class="p-4 bg-secondary">
     <h1 class="text-center">Page Not Found</h1>
     <p class="mt-4 text-center">
       <router-link to="/" class="t-btn bg-primary"> Go Home </router-link>

@@ -102,7 +102,7 @@ yarn dev # OR npm run dev
 - `useAuthState` in `/src/firebase.js` returns `{ user, error, isAuthenticated }`
 - `useSignOut` in `/src/firebase.js` - Signs Out User
 - `getUserState` in `/src/firebase.js` - Returns promise
-- `isValidEmail` `/src/helpers/isValidEmail.js` function returns true if email is valid
+- `isValidEmail` `/src/helpers/index.js` function returns true if email is valid
 - `Loading` in `/src/components/Loading.vue` - Loading spinner
 - `Dialog` in `/src/components/Dialog.vue` - Headless UI dialog
 
@@ -111,7 +111,7 @@ yarn dev # OR npm run dev
 - Font - `Ubuntu (font-text)` & `Goldman (font-heading)`
 - Primary Color - Tailwind - `colors.sky["500"]`
 - Secondary Color - Tailwind - `colors.slate["700"]`
-- Background Color - index.css - `#22272e`
+- Background Color - Tailwind - `.bg-secondary/90`
 - Error Color - Tailwind - `colors.red["500"]`
 
 #### Font Awesome

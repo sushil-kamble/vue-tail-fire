@@ -1,5 +1,5 @@
 <template>
-  <section class="p-4 t-page-position bg-secondary">
+  <section class="p-4 bg-secondary w-full">
     <h1>Vue-Tail-Fire</h1>
     <hr />
     <h2 class="mb-2">Pages</h2>
@@ -16,7 +16,7 @@
       <li>Font - <code>Ubuntu (font-text) & Goldman (font-heading)</code></li>
       <li>Primary Color - <code>Tailwind - colors.blue["500"]</code></li>
       <li>Secondary Color - <code>Tailwind - colors.coolGray["700"]</code></li>
-      <li>Background Color - <code>index.css - #22272e</code></li>
+      <li>Background Color - <code>Tailwind - .bg-secondary/90</code></li>
       <li>Error Color - <code>Tailwind - colors.red["500"]</code></li>
     </ul>
   </section>

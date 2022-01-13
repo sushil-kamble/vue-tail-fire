@@ -6,15 +6,16 @@
   >
     <Loading class="h-16 w-16" />
   </div>
-  <div v-else>
+  <div v-else class="flex flex-col min-h-screen">
     <Navbar />
-    <div class="t-main-set">
+    <div class="t-main-set flex-1 grid place-items-center">
       <router-view v-slot="{ Component, route }">
         <transition name="slide" mode="out-in">
           <component :is="Component" :key="route.path" />
         </transition>
       </router-view>
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -22,12 +23,14 @@
 import { defineComponent, ref } from "vue";
 import Navbar from "@/components/Navbar.vue";
 import Loading from "@/components/Loading.vue";
+import Footer from "@/components/Footer.vue";
 import { getUserState } from "@/firebase";
 export default defineComponent({
   name: "App",
   components: {
     Navbar,
     Loading,
+    Footer,
   },
   setup(props) {
     const isLoading = ref(true);

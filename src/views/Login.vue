@@ -70,7 +70,7 @@ import { useRouter } from "vue-router";
 import { ref } from "vue";
 import Loading from "@/components/Loading.vue";
 import Dialog from "@/components/Dialog.vue";
-import { isValidEmail } from "@/helpers/isValidEmail";
+import { isValidEmail } from "@/helpers";
 
 export default {
   components: {
@@ -99,7 +99,7 @@ export default {
           error.value = e.message;
         }
       } else {
-        error.value = "Enter valid Email Id and Password";
+        error.value = "Enter valid Email and Password";
       }
       loading.value = false;
     };

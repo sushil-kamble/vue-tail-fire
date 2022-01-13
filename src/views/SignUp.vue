@@ -94,7 +94,7 @@ import {
 import { useRouter } from "vue-router";
 import { reactive, toRefs, computed, ref } from "vue";
 import Loading from "@/components/Loading.vue";
-import { isValidEmail } from "@/helpers/isValidEmail";
+import { isValidEmail } from "@/helpers";
 
 export default {
   name: "SignUp",

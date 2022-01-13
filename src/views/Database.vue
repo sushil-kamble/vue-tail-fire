@@ -1,5 +1,5 @@
 <template>
-  <section class="t-page-position bg-secondary p-4">
+  <section class="bg-secondary p-4">
     <div>
       <h1 class="my-2">Write to Firestore.</h1>
       <div>

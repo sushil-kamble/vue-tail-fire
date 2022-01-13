@@ -4,11 +4,6 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    background-color: #22272e;
-    color: white;
-    font-family: Ubuntu, sans-serif;
-  }
   h1 {
     @apply text-xl font-heading font-bold md:text-3xl;
   }
@@ -27,6 +22,10 @@
   hr {
     @apply border-primary mt-1 my-4;
   }
+}
+
+body {
+  @apply bg-secondary/90 text-white font-text;
 }
 
 /* Pre configured class */
@@ -51,12 +50,6 @@
   @apply bg-secondary shadow-md rounded p-6;
 }
 /* AUTH */
-
-/* Pages */
-.t-page-position {
-  @apply my-4 md:my-20;
-}
-/* Pages */
 
 /* Inputs and Buttons */
 .t-input {
