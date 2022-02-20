@@ -9,7 +9,7 @@
           Email
         </label>
         <input
-          :class="`t-input ${!validEmail && 'border border-error'}`"
+          :class="`t-input w-full ${!validEmail && 'border border-error'}`"
           type="email"
           id="email"
           placeholder="Email"
@@ -26,7 +26,7 @@
           Display Name
         </label>
         <input
-          class="t-input"
+          class="t-input w-full"
           type="text"
           id="name"
           placeholder="Display Name"
@@ -39,14 +39,29 @@
           <font-awesome-icon :icon="['fas', 'key']" class="mr-1" />
           Password
         </label>
-        <input
-          class="t-input"
-          type="password"
-          id="password"
-          placeholder="Password"
-          v-model="password"
-          required
-        />
+        <label class="relative text-gray-400 focus-within:text-gray-600 block">
+          <input
+            :type="showPassword ? 'text' : 'password'"
+            id="password"
+            placeholder="Password"
+            class="t-input w-full"
+            v-model="password"
+            required
+          />
+          <font-awesome-icon
+            :icon="showPassword ? ['fas', 'eye-slash'] : ['fas', 'eye']"
+            @click="showPassword = !showPassword"
+            class="
+              h-8
+              absolute
+              top-1/2
+              transform
+              -translate-y-1/2
+              right-3
+              cursor-pointer
+            "
+          />
+        </label>
       </div>
       <div class="mb-4">
         <label class="block text-sm font-bold mb-2" for="cpassword">
@@ -54,7 +69,7 @@
           Confirm Password
         </label>
         <input
-          :class="`t-input ${!equalPassword && 'border border-error'}`"
+          :class="`t-input w-full ${!equalPassword && 'border border-error'}`"
           type="password"
           id="cpassword"
           placeholder="Confirm Password"
@@ -104,6 +119,7 @@ export default {
   setup() {
     const auth = getAuth();
     const router = useRouter();
+    const showPassword = ref(false);
 
     const state = reactive({
       email: "",
@@ -157,6 +173,7 @@ export default {
     };
 
     return {
+      showPassword,
       ...toRefs(state),
       equalPassword,
       validEmail,

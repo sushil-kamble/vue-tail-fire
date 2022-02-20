@@ -5,7 +5,12 @@
       <hr />
       <div class="mb-4">
         <label class="block text-sm font-bold mb-2" for="email"> Email </label>
-        <input class="t-input" type="text" id="email" placeholder="Email" />
+        <input
+          class="t-input w-full"
+          type="text"
+          id="email"
+          placeholder="Email"
+        />
       </div>
       <div class="flex justify-between items-center">
         <button type="submit" class="t-btn inline-flex items-center bg-primary">

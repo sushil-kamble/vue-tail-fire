@@ -1,5 +1,5 @@
 <template>
-  <section class="p-4 bg-secondary">
+  <section class="p-4 bg-secondary w-full">
     <h1>Welcome, {{ user?.displayName }}</h1>
     <button
       class="my-4 t-btn inline-flex items-center bg-error"

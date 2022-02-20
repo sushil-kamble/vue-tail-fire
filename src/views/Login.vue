@@ -8,20 +8,41 @@
           <font-awesome-icon :icon="['fas', 'envelope']" class="mr-1" />
           Email
         </label>
-        <input class="t-input" type="text" id="email" placeholder="Email" />
+        <input
+          class="t-input w-full"
+          type="text"
+          id="email"
+          placeholder="Email"
+        />
       </div>
       <div class="mb-4">
         <label class="block text-sm font-bold mb-2" for="password">
           <font-awesome-icon :icon="['fas', 'key']" class="mr-1" />
           Password
         </label>
-        <input
-          class="t-input"
-          type="password"
-          id="password"
-          placeholder="Password"
-        />
+        <label class="relative text-gray-400 focus-within:text-gray-600 block">
+          <input
+            :type="showPassword ? 'text' : 'password'"
+            id="password"
+            placeholder="Password"
+            class="t-input w-full"
+          />
+          <font-awesome-icon
+            :icon="showPassword ? ['fas', 'eye-slash'] : ['fas', 'eye']"
+            @click="showPassword = !showPassword"
+            class="
+              h-8
+              absolute
+              top-1/2
+              transform
+              -translate-y-1/2
+              right-3
+              cursor-pointer
+            "
+          />
+        </label>
       </div>
+      <div class="mb-4"></div>
       <div class="flex justify-between items-center">
         <button type="submit" class="t-btn inline-flex items-center bg-primary">
           <Loading class="h-5 w-5" v-if="loading" />
@@ -80,6 +101,7 @@ export default {
   setup() {
     const auth = getAuth();
     const router = useRouter();
+    const showPassword = ref(false);
 
     const loading = ref(false);
     const error = ref("");
@@ -115,7 +137,7 @@ export default {
         error.value = e.message;
       }
     };
-    return { handleSubmit, googleSignUp, error, loading };
+    return { showPassword, handleSubmit, googleSignUp, error, loading };
   },
 };
 </script>

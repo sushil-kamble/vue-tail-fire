@@ -1,5 +1,5 @@
 {
-  "name": "vue3-fire9",
+  "name": "vue-fire-tail",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -14,7 +14,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
     "@headlessui/vue": "^1.4.2",
     "firebase": "^9.1.2",
-    "vue": "^3.2.16",
+    "vue": "^3.2.31",
     "vue-router": "4"
   },
   "devDependencies": {
