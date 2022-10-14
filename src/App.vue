@@ -1,8 +1,7 @@
 <template>
   <div
     v-if="isLoading"
-    class="flex items-center justify-center"
-    style="height: 80vh"
+    class="grid place-items-center h-screen"
   >
     <Loading class="h-16 w-16" />
   </div>
@@ -36,6 +35,8 @@ export default defineComponent({
     const isLoading = ref(true);
     getUserState().then(() => {
       isLoading.value = false;
+    }).catch(() => {
+      isLoading.value = false; // Error check if you have properly configured .env.local file
     });
     return {
       isLoading,
